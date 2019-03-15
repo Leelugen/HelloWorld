@@ -1,7 +1,5 @@
 package com.llg.Algorithm.String;
 
-import java.util.HashMap;
-
 /**
  * 字符串包含的问题
  */
@@ -32,6 +30,7 @@ public class Contain {
      * @param datas abb
      * @param key   bba
      * @return true
+     * 时间复杂度O(n)
      */
     public static boolean searchBorStr(String datas, String key) {
         if (datas.length() != key.length()) {//长度不相同返回false
@@ -40,23 +39,13 @@ public class Contain {
         if (datas.equals("") || key.equals("")) {
             return false;
         }
-        HashMap<Integer, Integer> offsetMap = new HashMap<>();
-        for (int i = 0; i < key.length(); i++) {
-            int offset = key.charAt(i) - 'A'; //偏移量
-            if (offsetMap.containsKey(offset)) {
-                offsetMap.put(offset, offsetMap.get(offset) + 1);
-            } else {
-                offsetMap.put(offset, 1);
-            }
+        int[] hash = new int[26];
+        for (int i = 0;i<datas.length();i++) {
+            ++hash[datas.charAt(i)-'A'];
+            --hash[key.charAt(i)-'A'];
         }
-        for (int j = 0; j < datas.length(); j++) {
-            int offset = key.charAt(j) - 'A';
-            if (!offsetMap.containsKey(offset)) {
-                return false;
-            }
-            if (offsetMap.get(offset) > 0) {
-                offsetMap.put(offset, offsetMap.get(offset) - 1);
-            } else {
+        for (int index:hash){
+            if (index != 0){
                 return false;
             }
         }

@@ -8,7 +8,7 @@ public class HelloWorld {
 
        /** ag string contain**/
         Contain contain = new Contain();
-        Boolean ret = Contain.searchBorStr("ABD","BAA");
+        Boolean ret = Contain.searchBorStr("AB","BAA");
         System.out.println("a contain B ????"+ret);
 
 
