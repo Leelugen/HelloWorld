@@ -2,14 +2,17 @@ package com.llg;
 
 
 import com.llg.Algorithm.String.Contain;
+import com.llg.Algorithm.String.Parse;
 
 public class HelloWorld {
     public static void main(String[] args) {
 
        /** ag string contain**/
-        Contain contain = new Contain();
-        Boolean ret = Contain.searchBorStr("AB","BAA");
-        System.out.println("a contain B ????"+ret);
+//        Contain contain = new Contain();
+//        Boolean ret = Contain.searchBorStr("AB","BAA");
+//        System.out.println("a contain B ????"+ret);
+
+        System.out.println(Parse.parseInt("3455554")+"======");
 
 
        /** dp builder **/
