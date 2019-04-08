@@ -6,6 +6,7 @@ import com.llg.Algorithm.String.Contain;
 import com.llg.Algorithm.String.Parse;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class HelloWorld {
     public static void main(String[] args) {
@@ -18,9 +19,8 @@ public class HelloWorld {
  //       System.out.println(Parse.parseInt("3455554")+"======");
 
 
-        int[] data =new int[]{4,7,8,9,1,2,1,43,111111111,112,112,32,32,232133,43,31,-1};
-
-        Sort.insertSort(data);
+        int[] data =new int[]{4,7,8,9,1,2,1,43,111111111,112,112,32,32,232133,43,31,-1,};
+        Sort.insertBinarySort(data);
 
         System.out.println(Arrays.toString(data));
        /** dp builder **/
@@ -48,4 +48,5 @@ public class HelloWorld {
     public static void testException(){
         throw new NullPointerException();
     }
+
 }
