@@ -1,4 +1,4 @@
-package com.llg.DesignPatterns.Proxy.example01;
+package com.llg.DesignPatterns.Proxy.staticProxy;
 
 public class Proxy implements Subject {
 

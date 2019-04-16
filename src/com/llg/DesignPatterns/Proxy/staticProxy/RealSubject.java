@@ -1,4 +1,4 @@
-package com.llg.DesignPatterns.Proxy.example01;
+package com.llg.DesignPatterns.Proxy.staticProxy;
 
 /**
  * 真实对象类
