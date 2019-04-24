@@ -39,6 +39,7 @@ public class DynamicProxy implements InvocationHandler {
         result = method.invoke(proxyObject,args);
         return result;
     }
+
 }
 
 

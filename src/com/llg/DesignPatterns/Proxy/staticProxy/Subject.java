@@ -5,7 +5,7 @@ package com.llg.DesignPatterns.Proxy.staticProxy;
  * 帮忙做的事
  */
 public interface Subject {
-    public void buyMac();
+    void buyMac();
 }
 
 
