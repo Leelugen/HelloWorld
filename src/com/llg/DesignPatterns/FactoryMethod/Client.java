@@ -10,5 +10,9 @@ public class Client {
         AudiQ5 audiQ5 = factory.createAudiCar(AudiQ5.class);
         audiQ5.drive();
         audiQ5.selfNavigation();
+
+        AudiQ7 audiQ7 = factory.createAudiCar(AudiQ7.class);
+        audiQ7.drive();
+        audiQ7.selfNavigation();
     }
 }

@@ -1,7 +1,7 @@
 package com.llg.DesignPatterns.FactoryMethod;
 
 /**
- * 抽象工厂
+ * 抽象工厂类
  */
 public abstract  class CarFactory {
 
