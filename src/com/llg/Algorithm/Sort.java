@@ -3,11 +3,12 @@ package com.llg.Algorithm;
 public class Sort {
 
     /**
-     * 暴力排序法 跟冒泡排序区别不大
+     * 选择排序
      *
      * @param data
      */
-    public static void simpleSort(int[] data) {
+    public static void selectSort(int[] data) {
+        long startTime = System.nanoTime();
         for (int i = 0; i < data.length; i++) {
             for (int j = i + 1; j < data.length; j++) {
                 if (data[i] > data[j]) {
@@ -17,6 +18,8 @@ public class Sort {
                 }
             }
         }
+        long spendTime = System.nanoTime()-startTime;
+        System.out.println("spend time"+spendTime);
     }
 
 
@@ -28,6 +31,7 @@ public class Sort {
      * @param data
      */
     public static void bubbleSort(int[] data) {
+        long startTime = System.nanoTime();
         for (int i = data.length - 1; i > 0; i--) {
             boolean isChange = false;
             for (int j = 0; j < data.length - 1; j++) {
@@ -39,9 +43,13 @@ public class Sort {
                 }
             }
             if (!isChange) {
+                long spendTime = System.nanoTime()-startTime;
+                System.out.println("spend time"+spendTime);
                 return;
             }
         }
+        long spendTime = System.nanoTime()-startTime;
+        System.out.println("spend time"+spendTime);
     }
 
 
@@ -63,6 +71,7 @@ public class Sort {
      * @param data
      */
     public static void insertSort(int[] data) {
+        long startTime = System.nanoTime();
         for (int i = 1; i < data.length; i++) {
             //比有序序列最大的值要小 则要将数据插入
             if (data[i] < data[i - 1]) {
@@ -75,6 +84,8 @@ public class Sort {
                 data[j + 1] = temp;
             }
         }
+        long spendTime = System.nanoTime()-startTime;
+        System.out.println("spend time"+spendTime);
     }
 
     /**
@@ -84,6 +95,7 @@ public class Sort {
      * @param data
      */
     public static void insertBinarySort(int[] data) {
+        long startTime = System.nanoTime();
         for (int i = 1; i < data.length; i++) {
             //比有序序列最大的值要小 则要将数据插入
             if (data[i] < data[i - 1]) {
@@ -100,12 +112,48 @@ public class Sort {
                         low = mid + 1; //变化
                     }
                 }
-                for (int j = i-1; j > low; j--){
-                    data[j+1] = data[j];
+                for (int j = i - 1; j > low; j--) {
+                    data[j + 1] = data[j];
                 }
                 data[low] = temp;
             }
         }
+        long spendTime = System.nanoTime()-startTime;
+        System.out.println("spend time"+spendTime);
+    }
+
+
+    /**
+     * 希尔排序
+     * <p>
+     * 思想：
+     * 先是取一个合适的gap<n作为间隔，将全部元素分为gap个子序列，所有距离为gap的元素放入同一个子序列，再对每个子序列进行直接插入排序；
+     * 缩小间隔gap，例如 gap=ceil(gap/2)，重复上述子序列划分和排序
+     * 直到，最后gap=1时，将所有元素放在同一个序列中进行插入排序为止。
+     *
+     * @param data
+     */
+    public static void shellSort(int[] data) {
+        long startTime = System.nanoTime();
+        int size = data.length;
+        //序列增量 gap
+        for (int gap = size / 2; gap > 0; gap /= 2) {
+            //这里的思想，并不是将各个分组分开排序（也没有必要，这样要多一层循环），而是按分组顺序轮流排分组的序列
+            for (int i = gap; i < size; i++) {
+                //比分组序列最大的值要小（或者满足某种条件） 则要将数据插入
+                if (data[i] < data[i - gap]) {
+                    int temp = data[i];//待插入的值
+                    int k; //k是不满足条件的位置
+                    //寻找正确的插入位置并插入
+                    for (k = i; k - gap >= 0 && temp < data[k - gap]; k -= gap) {
+                        data[k] = data[k - gap]; //向后移动一个位置
+                    }
+                    data[k] = temp;
+                }
+            }
+        }
+        long spendTime = System.nanoTime()-startTime;
+        System.out.println("spend time"+spendTime);
     }
 
 }
