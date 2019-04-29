@@ -8,30 +8,29 @@ public class Sort {
      * @param data
      */
     public static void selectSort(int[] data) {
-        long startTime = System.nanoTime();
         for (int i = 0; i < data.length; i++) {
+            //优化： 先将记录下标，不用每次去交换
+            int min = i;
             for (int j = i + 1; j < data.length; j++) {
-                if (data[i] > data[j]) {
-                    int temp = data[i];
-                    data[i] = data[j];
-                    data[j] = temp;
+                if (data[i] < data[j]) {
+                  min = j;
                 }
             }
+            if (min != i){
+                swap(data,min,i);
+            }
         }
-        long spendTime = System.nanoTime()-startTime;
-        System.out.println("spend time"+spendTime);
     }
 
 
     /**
      * 冒泡排序
      * 原理：俩俩比较相邻记录的排序码，若发生逆序，则交换；有俩种方式进行冒泡，一种是先把小的冒泡到前边去，另一种是把大的元素冒泡到后边。
-     * 性能：冒泡排序的性能比暴力排序要好，尤其是数据不是很混乱的情况，时间复杂度 n^2
+     * 性能：时间复杂度 n^2,通过每一次相邻元素的交换使得序列趋于有序
      *
      * @param data
      */
     public static void bubbleSort(int[] data) {
-        long startTime = System.nanoTime();
         for (int i = data.length - 1; i > 0; i--) {
             boolean isChange = false;
             for (int j = 0; j < data.length - 1; j++) {
@@ -43,13 +42,9 @@ public class Sort {
                 }
             }
             if (!isChange) {
-                long spendTime = System.nanoTime()-startTime;
-                System.out.println("spend time"+spendTime);
                 return;
             }
         }
-        long spendTime = System.nanoTime()-startTime;
-        System.out.println("spend time"+spendTime);
     }
 
 
@@ -71,7 +66,6 @@ public class Sort {
      * @param data
      */
     public static void insertSort(int[] data) {
-        long startTime = System.nanoTime();
         for (int i = 1; i < data.length; i++) {
             //比有序序列最大的值要小 则要将数据插入
             if (data[i] < data[i - 1]) {
@@ -84,8 +78,6 @@ public class Sort {
                 data[j + 1] = temp;
             }
         }
-        long spendTime = System.nanoTime()-startTime;
-        System.out.println("spend time"+spendTime);
     }
 
     /**
@@ -95,7 +87,6 @@ public class Sort {
      * @param data
      */
     public static void insertBinarySort(int[] data) {
-        long startTime = System.nanoTime();
         for (int i = 1; i < data.length; i++) {
             //比有序序列最大的值要小 则要将数据插入
             if (data[i] < data[i - 1]) {
@@ -118,8 +109,6 @@ public class Sort {
                 data[low] = temp;
             }
         }
-        long spendTime = System.nanoTime()-startTime;
-        System.out.println("spend time"+spendTime);
     }
 
 
@@ -131,10 +120,12 @@ public class Sort {
      * 缩小间隔gap，例如 gap=ceil(gap/2)，重复上述子序列划分和排序
      * 直到，最后gap=1时，将所有元素放在同一个序列中进行插入排序为止。
      *
+     *
+     * 时间复杂度 nlogn
+     *
      * @param data
      */
     public static void shellSort(int[] data) {
-        long startTime = System.nanoTime();
         int size = data.length;
         //序列增量 gap
         for (int gap = size / 2; gap > 0; gap /= 2) {
@@ -152,8 +143,66 @@ public class Sort {
                 }
             }
         }
-        long spendTime = System.nanoTime()-startTime;
-        System.out.println("spend time"+spendTime);
+    }
+
+
+    /**
+     * 快速排序    分而治之的思想
+     *
+     * 平均时间复杂度  nlogN     空间复杂度logN
+     *
+     * 1.对于数组[l,h] 找到一个基准元素a[m],将数组分成[l,m-1] [m+1,l],使得 左边比a[m]都小，右边比a[m]都大
+     *
+     *
+     * 2.对两边递归排序
+     * @param data
+     */
+    public static void quickSort(int[] data){
+        quickSort(data,0,data.length-1);
+    }
+
+
+    private static void quickSort(int[] data,int left,int right){
+        if (left > right){
+            return;
+        }
+        int pos = partition(data,left,right);
+        quickSort(data,left,pos-1);
+        quickSort(data,pos+1,right);
+    }
+
+    /**
+     * 划分方法
+     * 功能：将小于基准元素到左边，大于的到右边
+     * @return  基准元素的最终位置
+     */
+    private static int partition(int[] arr,int left,int right){
+        int pivot = arr[left];  //基准元素取最左边的元素
+        int pivotPos = left;  //一直指向中枢的位置
+        for (int i = left+1;i <= right;i++) {
+            if (arr[i] < pivot){
+                //如果交换元素就位于基准后第一个，则不需要交换
+                swap(arr,i, pivotPos);
+                pivotPos++;
+            }
+        }
+        if (arr[pivotPos] != pivot ){
+          swap(arr,pivotPos,right);
+        }
+        return pivotPos;
+    }
+
+
+    /**
+     * 交换
+     * @param arr
+     * @param i
+     * @param j
+     */
+    private static void swap(int[] arr,int i,int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
 }
