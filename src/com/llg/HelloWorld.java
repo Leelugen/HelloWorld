@@ -1,12 +1,9 @@
 package com.llg;
 
 
-import com.llg.Algorithm.Sort;
-import com.llg.Algorithm.String.Contain;
-import com.llg.Algorithm.String.Parse;
+import com.llg.Algorithm.Sort.Sort;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class HelloWorld {
     public static void main(String[] args) {
