@@ -1,6 +1,3 @@
-# HelloWorld
+# *HelloJava*
 >algorithm,designPattern,data structs....
 >coding by Java
-
-
-

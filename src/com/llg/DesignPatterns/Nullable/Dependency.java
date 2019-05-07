@@ -1,4 +1,4 @@
-package com.llg.Nullable;
+package com.llg.DesignPatterns.Nullable;
 
 public class Dependency implements DependencyBase{
     @Override
