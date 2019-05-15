@@ -7,13 +7,11 @@ public class Client {
     public static void main(String[] args) {
        // int[] data =generateIntArr();
        int[] data = {3,1,5,4,0,2};
-//        long startTime = System.nanoTime();
-//        Sort.quickSort(data);
-//        System.out.println(Arrays.toString(data));
-//        long spendTime = System.nanoTime()-startTime;
-//        System.out.println("spend time"+spendTime);
-        int[] ret = Sort_Link.getFirstNum(data,6);
-        System.out.println(Arrays.toString(ret));
+        long startTime = System.nanoTime();
+        Sort.quickSort(data);
+        System.out.println(Arrays.toString(data));
+        long spendTime = System.nanoTime()-startTime;
+        System.out.println("spend time"+spendTime);
     }
 
     private static int[] generateIntArr(){

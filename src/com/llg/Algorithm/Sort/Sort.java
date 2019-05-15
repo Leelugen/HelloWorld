@@ -164,7 +164,7 @@ public class Sort {
         if (left > right){
             return;
         }
-        int pos = partition(data,left,right);
+        int pos = partition2(data,left,right);
         quickSort(data,left,pos-1);
         quickSort(data,pos+1,right);
     }
@@ -192,16 +192,46 @@ public class Sort {
 
 
     /**
+     *
+     * @param arr
+     * @param left
+     * @param right
+     * @return
+     *
+     *  2 1 3 4 0 5
+     * 先从高位寻找不符合条件的位置，交换高位和低位
+     * 再从低位寻找不符合条件的位置，交换--------
+     * 直到低位不比高位高
+     */
+    private static int partition2(int[] arr,int left,int right){
+        int pivot = arr[left]; // 取第一个位置为中枢值
+        while (left < right){
+            while (left < right && arr[right] >= pivot){
+                right--;
+            }
+            swap(arr,left,right);
+            while (left < right && arr[left] <= pivot){
+                left++;
+            }
+            swap(arr,left,right);
+        }
+        return left;
+    }
+
+
+    /**
      * 交换
      * @param arr
      * @param i
      * @param j
      */
-    private static void swap(int[] arr,int i,int j){
+    private static void swap(int[] arr,int i,int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+
 
 
     public static void mergeSort(int[] data){

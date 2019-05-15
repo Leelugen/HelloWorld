@@ -1,5 +1,10 @@
 package com.llg.Algorithm.Sort;
 
+
+/**
+ * 排序的一些应用
+ */
+
 public class Sort_Link {
     /**1 .
      * 获取N个数的前m个数字，采用改进的快速排序算法
