@@ -175,19 +175,19 @@ public class Sort {
      * @return  基准元素的最终位置
      */
     private static int partition(int[] arr,int left,int right){
-        int pivot = arr[left];  //基准元素取最左边的元素
-        int pivotPos = left;  //一直指向中枢的位置
-        for (int i = left+1;i <= right;i++) {
+        int pivot = arr[left];
+        int pivotpos = left;
+        for (int i = left+1; i <= right; i++){
             if (arr[i] < pivot){
-                //如果交换元素就位于基准后第一个，则不需要交换
-                swap(arr,i, pivotPos);
-                pivotPos++;
+                pivotpos++;
+                if (pivotpos != i){     //如果交换元素就位于基准后第一个，则不需要交换
+                    swap(arr,i, pivotpos);
+               }
             }
         }
-        if (arr[pivotPos] != pivot ){
-          swap(arr,pivotPos,right);
-        }
-        return pivotPos;
+        arr[left] = arr[pivotpos];
+        arr[pivotpos] = pivot;
+        return pivotpos;
     }
 
 
