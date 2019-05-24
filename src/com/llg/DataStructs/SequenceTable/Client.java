@@ -1,4 +1,4 @@
-package com.llg.DataStructs;
+package com.llg.DataStructs.SequenceTable;
 
 public class Client {
     public static void main(String[] args) {
