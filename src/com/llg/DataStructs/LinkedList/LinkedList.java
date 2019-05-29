@@ -161,7 +161,6 @@ public class LinkedList {
         return -1;
     }
 
-
     public void listTraverse() {
         Node node = first;
         for (int i = 0; i < length; i++) {
