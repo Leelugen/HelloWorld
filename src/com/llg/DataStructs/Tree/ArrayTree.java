@@ -43,7 +43,7 @@ public class ArrayTree {
         if (!checkIndex(index)){
             return false;
         }
-        //根结点直接赋值就好
+        //根结点直接赋值
         if (direction == -1 && index == 0){
             mTree[0] = node;
             return true;
