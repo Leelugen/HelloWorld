@@ -16,10 +16,10 @@ public class HelloWorld {
  //       System.out.println(Parse.parseInt("3455554")+"======");
 
 
-        int[] data =new int[]{4,7,8,9,1,2,1,43,111111111,112,112,32,32,232133,43,31,-1,};
-        Sort.insertBinarySort(data);
-
-        System.out.println(Arrays.toString(data));
+//        int[] data =new int[]{4,7,8,9,1,2,1,43,111111111,112,112,32,32,232133,43,31,-1,};
+//        Sort.insertBinarySort(data);
+//
+//        System.out.println(Arrays.toString(data));
        /** dp builder **/
 //        Builder builder = new MacBookBuilder();
 //        Director pcDirector = new Director(builder);
