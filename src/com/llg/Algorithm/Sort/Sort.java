@@ -33,7 +33,7 @@ public class Sort {
     public static void bubbleSort(int[] data) {
         for (int i = data.length - 1; i > 0; i--) {
             boolean isChange = false;
-            for (int j = 0; j < data.length - 1; j++) {
+            for (int j = 0; j < i; j++) {
                 if (data[j] > data[j + 1]) {
                     int temp = data[j];
                     data[j] = data[j + 1];
@@ -46,7 +46,6 @@ public class Sort {
             }
         }
     }
-
 
     /**
      * 插入排序
