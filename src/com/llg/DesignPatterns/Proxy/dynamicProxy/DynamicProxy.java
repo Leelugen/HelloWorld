@@ -31,7 +31,7 @@ public class DynamicProxy implements InvocationHandler {
         //Proxy.newProxyInstance() 作用：根据指定的类装载器、一组接口 & 调用处理器 生成动态代理类实例，并最终返回
     }
 
-    //  动态代理对象调用目标对象的任何方法前，都会调用调用处理器类的invoke（）
+    //  动态代理对象调用目标对象的任何方法前，都会调用调用处理器类的invoke()
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("代购出门了>>>>>>>>");

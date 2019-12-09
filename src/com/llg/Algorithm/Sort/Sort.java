@@ -1,5 +1,7 @@
 package com.llg.Algorithm.Sort;
 
+import java.util.ArrayList;
+
 public class Sort {
 
     /**
@@ -20,6 +22,10 @@ public class Sort {
                 swap(data,min,i);
             }
         }
+
+
+        new ArrayList<>();
+
     }
 
 
@@ -151,7 +157,7 @@ public class Sort {
      * 平均时间复杂度  nlogN     空间复杂度logN
      *
      * 1.对于数组[l,h] 找到一个基准元素a[m],将数组分成[l,m-1] [m+1,l],使得 左边比a[m]都小，右边比a[m]都大
-     * 2.对两边递归排序
+     *      * 2.对两边递归排序
      * @param data
      */
     public static void quickSort(int[] data){
@@ -259,7 +265,7 @@ public class Sort {
     private static void merge(int[] data,int[] temp, int left,int mid,int right){
         int i = left;
         int j = mid+1;
-        int t= 0;
+        int t = 0;
         while (i <= mid && j<=right){
             if (data[i]<data[j]){
                 temp[t++] = data[i++];
