@@ -1,12 +1,10 @@
 package com.llg.Algorithm.Sort;
 
-import java.util.ArrayList;
-
 public class Sort {
 
     /**
      * 选择排序
-     *
+     * 思想:在待排数据中每次去选择一个最优解，迭代，这样数据最终有序。
      * @param data
      */
     public static void selectSort(int[] data) {
@@ -22,10 +20,6 @@ public class Sort {
                 swap(data,min,i);
             }
         }
-
-
-        new ArrayList<>();
-
     }
 
 
@@ -38,12 +32,13 @@ public class Sort {
      */
     public static void bubbleSort(int[] data) {
         for (int i = data.length - 1; i > 0; i--) {
+            //对于一些极端情况做了优化，如整体有序的数据
             boolean isChange = false;
+
+            //把元素大的冒泡到后面
             for (int j = 0; j < i; j++) {
                 if (data[j] > data[j + 1]) {
-                    int temp = data[j];
-                    data[j] = data[j + 1];
-                    data[j + 1] = temp;
+                    swap(data,j,j+1);
                     isChange = true;
                 }
             }
@@ -77,6 +72,7 @@ public class Sort {
                 int j; //j是不满足条件的位置，j+1即是最后我们将要插入的位置
                 int temp = data[i];//待插入的值
                 //寻找正确的插入位置并插入
+
                 for (j = i - 1; j >= 0 && temp < data[j]; j--) {
                     data[j + 1] = data[j];
                 }

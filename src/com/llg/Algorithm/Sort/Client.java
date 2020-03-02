@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class Client {
     public static void main(String[] args) {
-       // int[] data =generateIntArr();
-       int[] data = {3,1,5,4,0,2};
+        int[] data =generateIntArr();
+//       int[] data = {3,1,5,4,0,2};
         long startTime = System.nanoTime();
-        Sort.quickSort(data);
+        Sort.bubbleSort(data);
         System.out.println(Arrays.toString(data));
         long spendTime = System.nanoTime()-startTime;
         System.out.println("spend time"+spendTime);

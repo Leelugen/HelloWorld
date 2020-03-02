@@ -27,8 +27,16 @@ public class Client {
 //        stack.pop();
 //        stack.pop();
 
-        Permute permute = new Permute();
-        List<List<Integer>> ret = permute.permute(new int[]{1,2,3});
+//        Permute permute = new Permute();
+//        List<List<Integer>> ret = permute.permute(new int[]{1,2,3});
+//        for (List<Integer> temp:ret){
+//            System.out.println();
+//            for (Integer integer:temp){
+//                System.out.print(integer);
+//            }
+//        }
+
+        List<List<Integer>> ret = new Combine().combine(6,3);
         for (List<Integer> temp:ret){
             System.out.println();
             for (Integer integer:temp){
