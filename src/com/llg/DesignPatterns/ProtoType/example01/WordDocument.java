@@ -14,15 +14,17 @@ public class WordDocument implements Cloneable {
         System.out.println("================ wordDocument 构造函数===================");
     }
 
+    @SuppressWarnings({"unchecked"})
     @Override
-    protected WordDocument clone(){
-        try{
-            WordDocument doc = (WordDocument) super.clone();
+    protected WordDocument clone() {
+        WordDocument doc = null;
+        try {
+            doc = (WordDocument) super.clone();
             doc.mText = this.mText;
             doc.mImages = (ArrayList<String>) this.mImages.clone();
             return doc;
-        }catch (Exception e){
-
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -47,8 +49,7 @@ public class WordDocument implements Cloneable {
         System.out.println("---------word doc start----------");
         System.out.println("Text:"+mText);
         System.out.println("images list:");
-        for (String imgName:mImages
-             ) {
+        for (String imgName:mImages) {
             System.out.println("image name:"+imgName);
         }
     }

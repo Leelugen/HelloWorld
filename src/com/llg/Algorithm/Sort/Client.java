@@ -8,7 +8,11 @@ public class Client {
         int[] data =generateIntArr();
 //       int[] data = {3,1,5,4,0,2};
         long startTime = System.nanoTime();
-        Sort.bubbleSort(data);
+//        Sort.bubbleSort(data);
+        Practice p = new Practice();
+//        p.bubbleSort(data);
+        p.quickSort(data);
+//        Sort.quickSort(data);
         System.out.println(Arrays.toString(data));
         long spendTime = System.nanoTime()-startTime;
         System.out.println("spend time"+spendTime);

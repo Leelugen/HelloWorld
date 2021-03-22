@@ -5,6 +5,7 @@ public class Sort {
     /**
      * 选择排序
      * 思想:在待排数据中每次去选择一个最优解，迭代，这样数据最终有序。
+     *
      * @param data
      */
     public static void selectSort(int[] data) {
@@ -13,11 +14,11 @@ public class Sort {
             int min = i;
             for (int j = i + 1; j < data.length; j++) {
                 if (data[j] < data[min]) {
-                  min = j;
+                    min = j;
                 }
             }
-            if (min != i){
-                swap(data,min,i);
+            if (min != i) {
+                swap(data, min, i);
             }
         }
     }
@@ -38,7 +39,7 @@ public class Sort {
             //把元素大的冒泡到后面
             for (int j = 0; j < i; j++) {
                 if (data[j] > data[j + 1]) {
-                    swap(data,j,j+1);
+                    swap(data, j, j + 1);
                     isChange = true;
                 }
             }
@@ -120,8 +121,8 @@ public class Sort {
      * 先是取一个合适的gap<n作为间隔，将全部元素分为gap个子序列，所有距离为gap的元素放入同一个子序列，再对每个子序列进行直接插入排序；
      * 缩小间隔gap，例如 gap=ceil(gap/2)，重复上述子序列划分和排序
      * 直到，最后gap=1时，将所有元素放在同一个序列中进行插入排序为止。
-     *
-     *
+     * <p>
+     * <p>
      * 时间复杂度 nlogn
      *
      * @param data
@@ -149,41 +150,43 @@ public class Sort {
 
     /**
      * 快速排序    分而治之的思想
-     *
+     * <p>
      * 平均时间复杂度  nlogN     空间复杂度logN
-     *
+     * <p>
      * 1.对于数组[l,h] 找到一个基准元素a[m],将数组分成[l,m-1] [m+1,l],使得 左边比a[m]都小，右边比a[m]都大
-     *      * 2.对两边递归排序
+     * * 2.对两边递归排序
+     *
      * @param data
      */
-    public static void quickSort(int[] data){
-        quickSort(data,0,data.length-1);
+    public static void quickSort(int[] data) {
+        quickSort(data, 0, data.length - 1);
     }
 
 
-    private static void quickSort(int[] data,int left,int right){
-        if (left > right){
+    private static void quickSort(int[] data, int left, int right) {
+        if (left > right) {
             return;
         }
-        int pos = partition2(data,left,right);
-        quickSort(data,left,pos-1);
-        quickSort(data,pos+1,right);
+        int pos = partition2(data, left, right);
+        quickSort(data, left, pos - 1);
+        quickSort(data, pos + 1, right);
     }
 
     /**
      * 划分方法
      * 功能：将小于基准元素到左边，大于的到右边
-     * @return  基准元素的最终位置
+     *
+     * @return 基准元素的最终位置
      */
-    private static int partition(int[] arr,int left,int right){
+    private static int partition(int[] arr, int left, int right) {
         int pivot = arr[left];
         int pivotpos = left;
-        for (int i = left+1; i <= right; i++){
-            if (arr[i] < pivot){
+        for (int i = left + 1; i <= right; i++) {
+            if (arr[i] < pivot) {
                 pivotpos++;
-                if (pivotpos != i){     //如果交换元素就位于基准后第一个，则不需要交换
-                    swap(arr,i, pivotpos);
-               }
+                if (pivotpos != i) {     //如果交换元素就位于基准后第一个，则不需要交换
+                    swap(arr, i, pivotpos);
+                }
             }
         }
         arr[left] = arr[pivotpos];
@@ -193,28 +196,25 @@ public class Sort {
 
 
     /**
-     *
      * @param arr
      * @param left
      * @param right
-     * @return
-     *
-     *  2 1 3 4 0 5
+     * @return 2 1 3 4 0 5
      * 先从高位寻找不符合条件的位置，交换高位和低位
      * 再从低位寻找不符合条件的位置，交换--------
      * 直到低位不比高位高
      */
-    private static int partition2(int[] arr,int left,int right){
+    private static int partition2(int[] arr, int left, int right) {
         int pivot = arr[left]; // 取第一个位置为中枢值
-        while (left < right){
-            while (left < right && arr[right] >= pivot){
+        while (left < right) {
+            while (left < right && arr[right] >= pivot) {
                 right--;
             }
-            swap(arr,left,right);
-            while (left < right && arr[left] <= pivot){
+            swap(arr, left, right);
+            while (left < right && arr[left] <= pivot) {
                 left++;
             }
-            swap(arr,left,right);
+            swap(arr, left, right);
         }
         return left;
     }
@@ -222,62 +222,62 @@ public class Sort {
 
     /**
      * 交换
+     *
      * @param arr
      * @param i
      * @param j
      */
-    private static void swap(int[] arr,int i,int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
 
-
-
-    public static void mergeSort(int[] data){
+    public static void mergeSort(int[] data) {
         int[] temp = new int[data.length];
-        mergeSort(data,temp,0,data.length-1);
+        mergeSort(data, temp, 0, data.length - 1);
     }
 
     /**
      * 归并排序
-     *
+     * <p>
      * 分治的思想
      * 分：    将序列递归分成 n/2
-     *
+     * <p>
      * 治：    合并子序列
+     *
      * @param data
      */
-    private static void mergeSort(int[] data,int[] temp,int left,int right){
-        if (left<right){
-            int mid = (left+right)/2;
-            mergeSort(data,temp,left,mid);
-            mergeSort(data,temp,mid+1,right);
-            merge(data,temp,left,mid,right);
+    private static void mergeSort(int[] data, int[] temp, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSort(data, temp, left, mid);
+            mergeSort(data, temp, mid + 1, right);
+            merge(data, temp, left, mid, right);
         }
     }
 
-    private static void merge(int[] data,int[] temp, int left,int mid,int right){
+    private static void merge(int[] data, int[] temp, int left, int mid, int right) {
         int i = left;
-        int j = mid+1;
+        int j = mid + 1;
         int t = 0;
-        while (i <= mid && j<=right){
-            if (data[i]<data[j]){
+        while (i <= mid && j <= right) {
+            if (data[i] < data[j]) {
                 temp[t++] = data[i++];
-            }else {
+            } else {
                 temp[t++] = data[j++];
             }
         }
-        while(i<=mid){//将左边剩余元素填充进temp中
+        while (i <= mid) {//将左边剩余元素填充进temp中
             temp[t++] = data[i++];
         }
-        while(j<=right){//将右序列剩余元素填充进temp中
+        while (j <= right) {//将右序列剩余元素填充进temp中
             temp[t++] = data[j++];
         }
         t = 0;
         //将temp中的元素全部拷贝到原数组中
-        while(left <= right){
+        while (left <= right) {
             data[left++] = temp[t++];
         }
     }
